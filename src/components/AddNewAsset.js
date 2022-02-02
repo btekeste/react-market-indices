@@ -2,11 +2,11 @@ import React, {useState, useContext} from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 export const AddNewAsset = () => {
-    const [ticker, setTicker] = useState('n/a');
-    const [description, setDescription] = useState('n/a');
-    const [lastPrice, setLastPrice] = useState(0);
-    const [changePercentage, setChangePercentage] = useState(0);
-    const [changeValue, setChangeValue] = useState(0);
+    const [ticker, setTicker] = useState('');
+    const [description, setDescription] = useState('');
+    const [lastPrice, setLastPrice] = useState();
+    const [changePercentage, setChangePercentage] = useState();
+    const [changeValue, setChangeValue] = useState();
 
     const { addAsset } = useContext(GlobalContext);
 
@@ -26,35 +26,58 @@ export const AddNewAsset = () => {
     }
 
     return (
-        <div>
-            <h3>Add New Asset</h3>
-            <form onSubmit={onSubmit}>
-                <div className="form-control">
+        <div className="md:m-2 md:p-2">
+            <h3 className="my-3 text-xl">Enter A New Asset:</h3>
+            <form onSubmit={onSubmit} className="max-w-xs items-center">
+                <div className="mb-3">
                     <label htmlFor="ticker">Ticker</label>
-                    <input type="text" value={ticker} onChange={(e) => setTicker(e.target.value)}
-                        placeholder="Enter ticker..." />
+                    <input type="text" 
+                        className="TailwindCSSFormInput"
+                        value={ticker} onChange={(e) => setTicker(e.target.value)}
+                        placeholder="Enter ticker ..."
+                        required />
                 </div>
-                <div className="form-control">
+                <div className="mb-3">
                     <label htmlFor="description">Description</label>
-                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Enter description..." />
+                    <input type="text" 
+                        className="TailwindCSSFormInput"
+                        value={description} onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Enter description ..." 
+                        required />
                 </div>
-                <div className="form-control">
+                <div className="mb-3">
                 <label htmlFor="lastPrice">Last Price</label>
-                    <input type="number" value={lastPrice} onChange={(e) => setLastPrice(e.target.value)}
-                        placeholder="Enter lastPrice..." />
+                    <input type="number" 
+                        className="TailwindCSSFormInput"                     
+                        value={lastPrice} onChange={(e) => setLastPrice(e.target.value)}
+                        placeholder="0" 
+                        required />
                 </div>
-                <div className="form-control">
+                <div className="mb-3">
                 <label htmlFor="changePercentage">Change Percentage</label>
-                    <input type="number" value={changePercentage} onChange={(e) => setChangePercentage(e.target.value)}
-                        placeholder="Enter changePercentage..." />
+                    <input type="number" 
+                        className="TailwindCSSFormInput"                     
+                        value={changePercentage} onChange={(e) => setChangePercentage(e.target.value)}
+                        placeholder="0" 
+                        required />
                 </div>
-                <div className="form-control">
+                <div className="mb-3">
                 <label htmlFor="changeValue">Change Value</label>
-                    <input type="number" value={changeValue} onChange={(e) => setChangeValue(e.target.value)}
-                        placeholder="Enter changeValue..." />
+                    <input type="number" step='any'
+                        className="TailwindCSSFormInput" 
+                        value={changeValue} onChange={(e) => setChangeValue(e.target.value)}
+                        placeholder="0" 
+                        required />
                 </div>
-                <button className="button">Add New Asset</button>
+                <div className="flex items-center mb-3">
+                    <button 
+                        className="px-4 py-3 font-semibold text-sm bg-gray-500 text-white 
+                            rounded-md shadow-sm 
+                            hover:-translate-y-1 hover:scale-110 hover:bg-gray-600 ease-in-out 
+                            delay-100 duration-300"
+                        >Add Asset
+                    </button>
+                </div>
             </form>
         </div>
     )
