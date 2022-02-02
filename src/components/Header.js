@@ -2,8 +2,10 @@ import React from 'react';
 
 export const Header = () => {
     return (
-        <h2>
-            Market Indices
-        </h2>
+        <div>
+            <h2 className="text-4xl text-center">
+                Market Indices
+            </h2>
+        </div>
     )
 }
