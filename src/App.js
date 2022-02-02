@@ -10,14 +10,18 @@ import './App.css';
 
 function App() {
   return (
-    <GlobalProvider>
-      <Header />
-      <div className="main">
-        <Holdings />
-        <AssetList />
-        <AddNewAsset />
+      <div>
+          <GlobalProvider>
+          <div className="md:p-4 p-2 md:m-20 bg-white md:rounded-xl md:shadow-2xl">
+            <Header />                
+            <div className="main">
+              <Holdings />
+              <AssetList />
+              <AddNewAsset />
+            </div>
       </div>
-    </GlobalProvider>
+      </GlobalProvider>
+    </div>
   );
 }
 
